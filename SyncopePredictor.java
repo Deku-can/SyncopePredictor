@@ -46,16 +46,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-/**
- * SyncopePredictor v1.2
- * =====================
- * Система моніторингу пацієнтів під час фізичної реабілітації
- * для прогнозування вазовагального синкопе на основі алгоритму PRSA.
- *
- * Інтерфейс: класичний медичний стиль (світла тема, як MedMonitor)
- * Компіляція: javac SyncopePredictor.java
- * Запуск:     java SyncopePredictor
- */
+
 public class SyncopePredictor {
 
     // =========================================================================
@@ -68,7 +59,7 @@ public class SyncopePredictor {
     private static final double DC_NORMAL_MAX = 7.2;
     private static final int    MAX_POINTS    = 120;
     private static final int    TIMER_MS      = 500;
-    private static final int    FALL_TICK     = 32;  // тік початку падіння (~16 с)
+    private static final int    FALL_TICK     = 32;  
 
     // =========================================================================
     // КОЛЬОРОВА СХЕМА — світла медична тема
