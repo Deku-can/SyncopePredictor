@@ -92,7 +92,7 @@ public class SyncopePredictor {
     private static final Color CLR_CHART_BG     = Color.WHITE;
     private static final Color CLR_GRID         = new Color(220, 220, 220);
     private static final Color CLR_THRESHOLD    = new Color(200, 0, 0);
-    private static final Color CLR_LINE_NORMAL  = new Color(180, 0, 0);   // червона крива (як на скріні)
+    private static final Color CLR_LINE_NORMAL  = new Color(180, 0, 0);   
     private static final Color CLR_LINE_ALARM   = new Color(220, 0, 0);
     private static final Color CLR_STATUS_OK    = new Color(0, 140, 0);
     private static final Color CLR_STATUS_ERR   = new Color(200, 0, 0);
@@ -141,7 +141,7 @@ public class SyncopePredictor {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             try {
-                // Системний L&F — щоб вікна виглядали нативно
+                
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             } catch (Exception ignored) {}
             new SyncopePredictor().launch();
@@ -495,7 +495,7 @@ public class SyncopePredictor {
         header.setOpaque(true);
         header.setPreferredSize(new Dimension(0, 24));
         block.add(header, BorderLayout.NORTH);
-        block.add(new JSeparator(), BorderLayout.AFTER_LAST_LINE); // не стандарт, замість цього:
+        block.add(new JSeparator(), BorderLayout.AFTER_LAST_LINE); 
 
         // Таблиця журналу
         String[] cols = {"Час", "Рівень", "Повідомлення"};
@@ -944,14 +944,7 @@ public class SyncopePredictor {
             }
         }
 
-        /**
-         * Малює червону пунктирну горизонтальну лінію порогу.
-         * На скріні поріг DC = 4.5 мс, але вісь Y іде від 0 до 110,
-         * тому лінія на графіку знаходиться дуже низько.
-         * Для читабельності демонстрації малюємо поріг на рівні 80 мс
-         * (як на скріні MedMonitor — там лінія проходить приблизно на 80).
-         * Реальну мітку "Threshold = 4.5" підписуємо поряд.
-         */
+    
         private void drawThreshold(Graphics2D g2, int cW, int cH) {
             // Порогова лінія на рівні 80 одиниць по осі Y (візуально)
             double thresholdVisual = 80.0;
@@ -971,9 +964,7 @@ public class SyncopePredictor {
             double xStep = (double) cW / MAX_POINTS;
             int startX = PAD_L + (int) ((MAX_POINTS - n) * xStep);
 
-            // Будуємо шлях кривої
-            // Маштабуємо DC (0–10 мс) у діапазон осі Y (0–110):
-            // dc_visual = dc * 10  (щоб крива займала верхню частину графіка)
+         
             GeneralPath path = new GeneralPath();
             for (int i = 0; i < n; i++) {
                 int x = startX + (int) (i * xStep);
@@ -983,7 +974,7 @@ public class SyncopePredictor {
                 else        path.lineTo(x, y);
             }
 
-            // Крива — червона, як на скріні
+            
             Color lineColor = isAlarm ? CLR_LINE_ALARM : CLR_LINE_NORMAL;
             g2.setColor(lineColor);
             g2.setStroke(new BasicStroke(1.8f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
