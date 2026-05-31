@@ -12,7 +12,7 @@
 java -jar SyncopePredictor.jar
 ```
 
-## 🛠️ Скомпілювати з вихідного коду (Для розробників)
+##  Скомпілювати з вихідного коду (Для розробників)
 Якщо ви хочете самостійно зібрати проєкт безпосередньо з файлу `SyncopePredictor.java`:
 ```bash
 javac SyncopePredictor.java
